@@ -48,37 +48,41 @@ export const fetchTapestry = async <ResponseType = any, InputType = any>({
     apiKey: process.env.TAPESTRY_API_KEY,
   })
 
-  const response = await fetch(
-    createURL({
-      domain: process.env.TAPESTRY_URL!,
-      endpoint,
-    }),
-    {
-      method,
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body:
-        method === FetchMethod.POST || method === FetchMethod.PUT
-          ? JSON.stringify(data)
-          : undefined,
+  const url = createURL({
+    domain: process.env.TAPESTRY_URL!,
+    endpoint,
+  })
+
+  const body =
+    method === FetchMethod.POST || method === FetchMethod.PUT
+      ? JSON.stringify(data)
+      : undefined
+
+  const response = await fetch(url, {
+    method,
+    headers: {
+      'Content-Type': 'application/json',
     },
-  )
+    body,
+  })
 
   if (!response.ok) {
     // error handling
-    const data = await response.json()
-    console.error(`Error fetching ${endpoint}`, data)
+    const text = await response.text()
+    console.error(`Error fetching ${endpoint}`, text)
 
-    throw data
+    try {
+      const data = JSON.parse(text)
+      throw data
+    } catch {
+      throw new Error(text)
+    }
   } else {
     try {
       const data = await response.json()
-
       return data
     } catch (error) {
       console.log(error)
-
       return null as ResponseType
     }
   }

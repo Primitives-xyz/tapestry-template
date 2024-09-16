@@ -1,12 +1,12 @@
 export interface IProfileResponse {
-  profile: IProfile
+  profile: IProfile[]
   socialCounts: ISocialCounts
 }
 
 export interface IProfile {
   id: number
   label: string
-  properties: IProperty[]
+  properties: IProperty
   entityType: string
   graphAddress: string
   fromGraphAddress: string
@@ -21,8 +21,7 @@ export interface IProfile {
 }
 
 export interface IProperty {
-  key: string
-  value: string
+  username?: string
 }
 
 export interface ISocialCounts {

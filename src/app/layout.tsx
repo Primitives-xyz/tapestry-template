@@ -5,7 +5,7 @@ import './globals.css'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Tapestry protocol boilerplate',
+  title: 'Tapestry protocol Boilerplate',
   description: 'Create your first Tapestry protocol app',
 }
 
