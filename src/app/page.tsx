@@ -1,7 +1,4 @@
-import { createProfileAction } from '@/actions/create-profile-action'
-import { Card } from '@/components/card'
-import { Input } from '@/components/form/input'
-import { SubmitButton } from '@/components/form/submit-button'
+import { CreateProfile } from '@/components/create-profile'
 import { ProfilesList } from '@/components/profile-list'
 
 export default async function Home() {
@@ -11,16 +8,7 @@ export default async function Home() {
       <div className="grid grid-cols-2 gap-6">
         <div>
           <h2 className="text-xl mb-3">Create Profile</h2>
-          <Card>
-            <form action={createProfileAction} className="flex flex-col gap-3">
-              <Input name="username" placeholder="Username" />
-              <Input
-                name="ownerWalletAddress"
-                placeholder="Owner wallet address"
-              />
-              <SubmitButton>Create Profile</SubmitButton>
-            </form>
-          </Card>
+          <CreateProfile />
         </div>
         <div>
           <h2 className="text-xl mb-3">Profiles</h2>
