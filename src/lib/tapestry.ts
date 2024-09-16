@@ -19,7 +19,21 @@ export const createProfile = async ({
     },
   })
 
+  console.log(createProfileResponse)
+
   return createProfileResponse
+}
+
+export const getSuggestedProfiles = async ({
+  ownerWalletAddress,
+}: {
+  ownerWalletAddress: string
+}) => {
+  const response = await fetchTapestry<any>({
+    endpoint: `profiles/suggestedProfiles/${ownerWalletAddress}`,
+  })
+
+  return response
 }
 
 export const getProfileInfo = async ({ username }: { username: string }) => {
