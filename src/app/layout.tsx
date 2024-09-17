@@ -19,10 +19,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <div className="p-12 max-w-3xl mx-auto">
-          <Header />
-          <AppWalletProvider>{children}</AppWalletProvider>
-        </div>
+        <AppWalletProvider>
+          <div className="p-12 max-w-3xl mx-auto">
+            <Header />
+            {children}
+          </div>
+        </AppWalletProvider>
       </body>
     </html>
   )

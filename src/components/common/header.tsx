@@ -14,7 +14,9 @@ export function Header() {
           Tapestry Boilerplate
         </a>
       </h1>
-      <UnifiedWalletButton />
+      <div>
+        <UnifiedWalletButton />
+      </div>
     </div>
   )
 }
