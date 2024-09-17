@@ -9,7 +9,12 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "next": "14.2.5",
+    "@jup-ag/wallet-adapter": "^1.0.0-alpha-5",
+    "@solana/wallet-adapter-wallets": "^0.19.32",
+    "@solflare-wallet/wallet-adapter": "^1.0.3",
+    "@solana/spl-token": "^0.4.8",
+    "@solana/web3.js": "^1.93.2",
+    "next": "14.2.7",
     "prettier": "^3.3.3",
     "prettier-plugin-organize-imports": "^4.0.0",
     "react": "^18",
