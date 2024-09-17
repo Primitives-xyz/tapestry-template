@@ -16,7 +16,7 @@ export async function Profile({ username }: Props) {
     <Link href={`/${username}`}>
       <Card>
         <Log message={data} />
-        <h2 className="text-xl mb-2">{data.profile[0].properties.username}</h2>
+        <h2 className="text-xl mb-2">{username}</h2>
         <p>
           {data.socialCounts.followers} followers |{' '}
           {data.socialCounts.following} following

@@ -12,12 +12,11 @@ export async function ProfilesList({}: Props) {
 
   return (
     <div>
-      {profiles.map((profile: any) => {
+      {profiles.map((profile: any, index: number) => {
         return (
-          <Profile
-            key={profile.properties.username}
-            username={profile.properties.username}
-          />
+          <div className="mb-4" key={index}>
+            <Profile username={profile.properties.username} />
+          </div>
         )
       })}
     </div>
