@@ -1,4 +1,5 @@
 import { CreateProfile } from '@/components/create-profile'
+import { GetSuggestedProfiles } from '@/components/get-suggested-profiles'
 import { ProfilesList } from '@/components/profile-list'
 
 export default async function Home() {
@@ -9,6 +10,8 @@ export default async function Home() {
         <div>
           <h2 className="text-xl mb-3">Create Profile</h2>
           <CreateProfile />
+          <h2 className="text-xl mb-3">Get Suggested Profiles</h2>
+          <GetSuggestedProfiles />
         </div>
         <div>
           <h2 className="text-xl mb-3">Profiles</h2>
