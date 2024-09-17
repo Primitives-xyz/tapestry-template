@@ -9,8 +9,8 @@ export const createProfile = async ({
   username: string
   ownerWalletAddress: string
 }) => {
-  return await fetchTapestry({
-    endpoint: 'profile/findOrCreate',
+  const createProfileResponse = await fetchTapestry({
+    endpoint: 'profiles/findOrCreate',
     method: FetchMethod.POST,
     data: {
       walletAddress: ownerWalletAddress,
@@ -18,23 +18,39 @@ export const createProfile = async ({
       blockchain: 'Solana',
     },
   })
+
+  console.log(createProfileResponse)
+
+  return createProfileResponse
 }
 
-// export const getAllProfiles = async () => {
-//   return await fetchTapestry<IProfileResponse[]>({
-//     endpoint: 'profile/all',
-//   })
-// }
+export const getSuggestedProfiles = async ({
+  ownerWalletAddress,
+}: {
+  ownerWalletAddress: string
+}) => {
+  const response = await fetchTapestry<any>({
+    endpoint: `profiles/suggestedProfiles/${ownerWalletAddress}`,
+  })
+
+  return response
+}
 
 export const getProfileInfo = async ({ username }: { username: string }) => {
   return await fetchTapestry<IProfileResponse>({
-    endpoint: `profile/${username}`,
+    endpoint: `profiles/${username}`,
+  })
+}
+
+export const getProfilesList = async ({}: {}) => {
+  return await fetchTapestry<any>({
+    endpoint: `profiles/all`,
   })
 }
 
 export const getFollowers = async ({ username }: { username: string }) => {
   const response = await fetchTapestry<IFollower[]>({
-    endpoint: `profile/followers/${username}`,
+    endpoint: `profiles/followers/${username}`,
   })
 
   return response.map((entry) => entry._fields[0].properties.username)
@@ -42,7 +58,7 @@ export const getFollowers = async ({ username }: { username: string }) => {
 
 export const getFollowing = async ({ username }: { username: string }) => {
   const response = await fetchTapestry<IFollower[]>({
-    endpoint: `profile/following/${username}`,
+    endpoint: `profiles/following/${username}`,
   })
 
   return response.map((entry) => entry._fields[0].properties.username)
