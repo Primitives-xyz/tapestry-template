@@ -59,36 +59,36 @@ export const AppWalletProvider: React.FC<{ children: React.ReactNode }> = ({
     ].filter((item) => item && item.name && item.icon) as Adapter[]
   }, [])
 
-  // function onConnect(notification: any) {
-  //   console.log('Connecté avec succès : ', notification)
-  // }
+  function onConnect(notification: any) {
+    console.log('Successfully connected: ', notification)
+  }
 
-  // function onDisconnect(notification: any) {
-  //   console.log('Déconnecté : ', notification)
-  // }
+  function onDisconnect(notification: any) {
+    console.log('Disconnected: ', notification)
+  }
 
-  // function onConnecting(notification: any) {
-  //   console.log('Connexion en cours : ', notification)
-  // }
+  function onConnecting(notification: any) {
+    console.log('Connecting: ', notification)
+  }
 
-  // function onNotInstalled(notification: any) {
-  //   console.log('Portefeuille non installé : ', notification)
-  // }
+  function onNotInstalled(notification: any) {
+    console.log('Wallet not installed: ', notification)
+  }
 
   const params: Omit<Parameters<typeof UnifiedWalletProvider>[0], 'children'> =
     useMemo(
       () => ({
         wallets: wallets,
         config: {
-          autoConnect: false,
+          autoConnect: true,
           env: 'mainnet-beta',
           metadata,
-          // notificationCallback: {
-          //   onConnect,
-          //   onDisconnect,
-          //   onConnecting,
-          //   onNotInstalled,
-          // },
+          notificationCallback: {
+            onConnect,
+            onDisconnect,
+            onConnecting,
+            onNotInstalled,
+          },
           walletlistExplanation: {
             href: 'https://station.jup.ag/docs/additional-topics/wallet-list',
           },
