@@ -1,6 +1,6 @@
 import { CreateProfile } from '@/components/create-profile'
 import { GetSuggestedProfiles } from '@/components/get-suggested-profiles'
-import { ProfilesList } from '@/components/profile-list'
+import { ProfilesList } from '@/components/profile/profile-list'
 
 export default async function Home() {
   return (

@@ -1,4 +1,5 @@
 export interface IProfileResponse {
+  [x: string]: any
   profile: IProfile[]
   socialCounts: ISocialCounts
 }

@@ -63,3 +63,35 @@ export const getFollowing = async ({ username }: { username: string }) => {
 
   return response.map((entry) => entry._fields[0].properties.username)
 }
+
+export const addFollower = async ({
+  apiKey,
+  startId,
+  endId,
+  properties,
+  execution,
+}: {
+  apiKey: string
+  startId: string
+  endId: string
+  properties: any[]
+  execution: any
+}) => {
+  const addFollowerResponse = await fetchTapestry({
+    endpoint: 'followers/add',
+    method: FetchMethod.POST,
+    data: {
+      apiKey,
+      shouldWriteOnChain: true,
+      startId,
+      endId,
+      properties,
+      execution,
+      blockchain: 'Solana',
+    },
+  })
+
+  console.log(addFollowerResponse)
+
+  return addFollowerResponse
+}

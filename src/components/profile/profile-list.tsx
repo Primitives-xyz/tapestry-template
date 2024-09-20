@@ -1,9 +1,7 @@
+import { Profile } from '@/components/profile/profile'
 import { getProfilesList } from '@/lib/tapestry'
-import { Profile } from './profile'
 
-interface Props {}
-
-export async function ProfilesList({}: Props) {
+export async function ProfilesList() {
   const data = await getProfilesList({})
 
   const profiles = data.nodes.filter((node: any) => {

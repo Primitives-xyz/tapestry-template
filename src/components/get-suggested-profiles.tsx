@@ -1,5 +1,5 @@
 import { getSuggestedProfilesAction } from '@/actions/get-suggested-profiles-actions'
-import { Card } from './card'
+import { Card } from './common/card'
 import { Input } from './form/input'
 import { SubmitButton } from './form/submit-button'
 

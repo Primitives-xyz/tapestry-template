@@ -1,5 +1,7 @@
+import { ReactNode } from 'react'
+
 interface Props {
-  children: React.ReactNode
+  children: ReactNode
 }
 
 export function Card({ children }: Props) {
