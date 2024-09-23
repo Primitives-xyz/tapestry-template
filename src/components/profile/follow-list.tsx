@@ -1,37 +1,26 @@
 'use client'
 
 import { Button } from '@/components/common/button'
+import { getFollowers, getFollowing } from '@/lib/tapestry'
 import Link from 'next/link'
 import { useState } from 'react'
 
-export function FollowList() {
+export async function FollowList({ username }: { username: string }) {
   const [followingListSelected, setFollowingListSelected] = useState(true)
 
-  const following = [
-    { username: 'john123' },
-    { username: 'jane_doe' },
-    { username: 'alice_wonder' },
-    { username: 'bob_the_builder' },
-    { username: 'charlie_chap' },
-    { username: 'emily1234' },
-    { username: 'frank_smith' },
-    { username: 'grace_t' },
-    { username: 'harry_potter' },
-    { username: 'ivy_gardner' },
-  ]
+  console.log('followingListSelected', followingListSelected)
 
-  const followers = [
-    { username: 'laura_king' },
-    { username: 'georgeH' },
-    { username: 'sophia_love' },
-    { username: 'michael88' },
-    { username: 'david_thegreat' },
-    { username: 'anna_banana' },
-    { username: 'paul_allen' },
-    { username: 'olivia_sky' },
-    { username: 'will_adams' },
-    { username: 'emma_nelson' },
-  ]
+  const followers = await getFollowers({
+    username,
+  })
+
+  console.log('FOLLOWERS', followers)
+
+  const following = await getFollowing({
+    username,
+  })
+
+  console.log('FOLLOWING', following)
 
   return (
     <div className="flex w-full space-x-6">
@@ -54,7 +43,7 @@ export function FollowList() {
           {(followingListSelected ? following : followers).map(
             (item, index) => (
               <ul key={index} className="list-disc list-inside">
-                <ListEntries key={index} username={item.username} />
+                <ListEntries key={index} username={item} />
               </ul>
             ),
           )}

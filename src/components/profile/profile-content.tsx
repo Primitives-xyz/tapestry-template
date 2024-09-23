@@ -9,7 +9,7 @@ export async function ProfileContent({ username }: Props) {
   return (
     <div>
       <Profile username={username} />
-      <FollowList />
+      <FollowList username={username} />
     </div>
   )
 }
