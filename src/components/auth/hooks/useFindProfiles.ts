@@ -1,41 +1,34 @@
-import { findAllProfiles } from '@/lib/tapestry'
 import { useEffect, useState } from 'react'
 
-export const useFindAllProfiles = ({
-  walletAddress,
-  shouldIncludeExternalProfiles = false,
-}: {
-  walletAddress: string
-  shouldIncludeExternalProfiles?: boolean
-}) => {
-  const [data, setData] = useState<any>(null)
+export const useProfiles = (walletAddress: string) => {
+  const [profiles, setProfiles] = useState<any>(null)
   const [loading, setLoading] = useState<boolean>(true)
-  const [error, setError] = useState<string | null>(null)
+  const [error, setError] = useState<any>(null)
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        setLoading(true)
-        const result = await findAllProfiles({
-          walletAddress,
-        })
+    if (!walletAddress) return
 
-        console.log(result)
-        setData(result) // On stocke les données reçues
-      } catch (err) {
-        setError('Erreur lors de la récupération des profils')
+    const fetchProfiles = async () => {
+      setLoading(true)
+      try {
+        const res = await fetch(
+          `/api/profiles/findAllProfiles?walletAddress=${walletAddress}`,
+        )
+        if (!res.ok) {
+          const errorData = await res.json()
+          throw new Error(errorData.error || 'Failed to fetch profiles')
+        }
+        const data = await res.json()
+        setProfiles(data)
+      } catch (err: any) {
+        setError(err)
       } finally {
-        setLoading(false) // Arrêter le chargement après la requête
+        setLoading(false)
       }
     }
 
-    if (walletAddress) {
-      fetchData() // Appelle l'API si `walletAddress` est fourni
-    } else {
-      setError('Adresse de portefeuille manquante')
-      setLoading(false)
-    }
-  }, [walletAddress, shouldIncludeExternalProfiles])
+    fetchProfiles()
+  }, [walletAddress])
 
-  return { data, loading, error }
+  return { profiles, loading, error }
 }

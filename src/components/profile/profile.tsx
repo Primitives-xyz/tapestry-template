@@ -12,26 +12,19 @@ export async function Profile({ username }: Props) {
     username,
   })
 
-  console.log(username)
-
   const followers = await getFollowers({
-    username: data.profile.properties?.id || '',
+    username,
   })
 
   const following = await getFollowing({
-    username: data.profile.properties?.id || '',
+    username,
   })
-
-  console.log({ followers, following })
 
   //https://api.usetapestry.dev/docs
   //https://api.usetapestry.dev/docs#tag/followers/POST/followers/add
 
   return (
     <Card>
-      <Log message={{ username }} />
-      <Log message={{ data }} />
-      <Log message={data.profile.properties?.namespace} />
       <Log message={{ followers }} />
       <Log message={{ following }} />
       <div className="flex justify-between items-center">

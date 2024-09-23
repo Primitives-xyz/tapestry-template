@@ -53,7 +53,7 @@ export function FollowList() {
         <div className="h-[200px] overflow-auto">
           {(followingListSelected ? following : followers).map(
             (item, index) => (
-              <ul className="list-disc list-inside">
+              <ul key={index} className="list-disc list-inside">
                 <ListEntries key={index} username={item.username} />
               </ul>
             ),
