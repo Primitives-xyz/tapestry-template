@@ -1,4 +1,4 @@
-import { Profile } from '@/components/profile/profile'
+import { ProfileContent } from '@/components/profile/profile-content'
 
 interface Props {
   params: {
@@ -7,5 +7,5 @@ interface Props {
 }
 
 export default async function ProfilePage({ params: { username } }: Props) {
-  return <Profile username={username} />
+  return <ProfileContent username={username} />
 }

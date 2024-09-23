@@ -24,6 +24,40 @@ export const createProfile = async ({
   return createProfileResponse
 }
 
+// export const findAllProfiles = async ({
+//   walletAddress,
+//   apiKey,
+//   shouldIncludeExternalProfiles = true,
+// }: {
+//   walletAddress: string
+//   apiKey: string
+//   shouldIncludeExternalProfiles?: boolean
+// }) => {
+//   return await fetchTapestry<any>({
+//     endpoint: `profiles/findAllProfiles`,
+//     data: {
+//       walletAddress,
+//       shouldIncludeExternalProfiles,
+//     },
+//   })
+// }
+
+export const findAllProfiles = async ({
+  walletAddress,
+}: {
+  walletAddress: string
+}) => {
+  const response = await fetchTapestry<any>({
+    endpoint: `profiles/findAllProfiles`,
+    data: {
+      walletAddress,
+      shouldIncludeExternalProfiles: true,
+    },
+  })
+
+  return response
+}
+
 export const getSuggestedProfiles = async ({
   ownerWalletAddress,
 }: {

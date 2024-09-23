@@ -1,17 +1,23 @@
 'use client'
 
+import classNames from 'classnames'
 import { ReactNode } from 'react'
-
 interface Props {
   children: ReactNode
   onClick?: () => void
   disabled?: boolean
+  active?: boolean
 }
 
-export function Button({ children, disabled, onClick }: Props) {
+export function Button({ children, disabled, active = true, onClick }: Props) {
   return (
     <button
-      className="bg-foreground text-background h-10 p-2 hover:opacity-80 rounded"
+      className={classNames(
+        'h-10 p-2 hover:opacity-80 rounded',
+        active
+          ? 'bg-foreground text-background border border-transparent'
+          : 'bg-background text-foreground border border-foreground',
+      )}
       disabled={disabled}
       onClick={onClick}
     >
