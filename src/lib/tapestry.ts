@@ -1,4 +1,3 @@
-import { IFollower } from '@/models/followers.models'
 import { IProfileResponse } from '@/models/profile.models'
 import { FetchMethod, fetchTapestry } from '@/utils/api'
 
@@ -49,7 +48,7 @@ export const getProfilesList = async ({}: {}) => {
 }
 
 export const getFollowers = async ({ username }: { username: string }) => {
-  const response = await fetchTapestry<IFollower[]>({
+  const response = await fetchTapestry({
     endpoint: `profiles/followers/${username}`,
   })
 
@@ -57,7 +56,7 @@ export const getFollowers = async ({ username }: { username: string }) => {
 }
 
 export const getFollowing = async ({ username }: { username: string }) => {
-  const response = await fetchTapestry<IFollower[]>({
+  const response = await fetchTapestry({
     endpoint: `profiles/following/${username}`,
   })
 

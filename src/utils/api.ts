@@ -66,6 +66,8 @@ export const fetchTapestry = async <ResponseType = any, InputType = any>({
     body,
   })
 
+  console.log({ url })
+
   if (!response.ok) {
     // error handling
     const text = await response.text()
@@ -80,6 +82,7 @@ export const fetchTapestry = async <ResponseType = any, InputType = any>({
   } else {
     try {
       const data = await response.json()
+      console.log('DATA', data)
       return data
     } catch (error) {
       console.log(error)
