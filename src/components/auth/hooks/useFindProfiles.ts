@@ -12,14 +12,14 @@ export const useProfiles = (walletAddress: string) => {
       setLoading(true)
       try {
         const res = await fetch(
-          `/api/profiles/findAllProfiles?walletAddress=${walletAddress}`,
+          `/api/findAllProfiles?walletAddress=${walletAddress}`,
         )
         if (!res.ok) {
           const errorData = await res.json()
           throw new Error(errorData.error || 'Failed to fetch profiles')
         }
         const data = await res.json()
-        setProfiles(data)
+        setProfiles(data.profiles)
       } catch (err: any) {
         setError(err)
       } finally {

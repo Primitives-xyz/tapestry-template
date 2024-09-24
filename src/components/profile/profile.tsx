@@ -7,8 +7,6 @@ interface Props {
 }
 
 export async function Profile({ username }: Props) {
-  const mainUsername = 'marc' // TODO
-
   const data = await getProfileInfo({
     username,
   })
@@ -28,7 +26,7 @@ export async function Profile({ username }: Props) {
             </p>
           </div>
         </Link>
-        <FollowButton username={username} followersName={mainUsername} />
+        <FollowButton username={username} />
       </div>
     </Card>
   )

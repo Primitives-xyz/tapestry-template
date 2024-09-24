@@ -20,7 +20,6 @@ export async function GET(req: NextRequest) {
       method: FetchMethod.GET,
       data: {
         walletAddress,
-        shouldIncludeExternalProfiles: false,
       },
     })
 
