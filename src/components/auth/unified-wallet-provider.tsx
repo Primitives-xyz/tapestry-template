@@ -61,6 +61,11 @@ export const AppWalletProvider: React.FC<{ children: React.ReactNode }> = ({
 
   function onConnect(notification: any) {
     console.log('Successfully connected: ', notification)
+    const publicKey = notification.publicKey
+    console.log('publicKey: ', publicKey)
+
+    // TODO: get Profile from publicKey address
+    // TODO: store Profile in mainProfile with hook
   }
 
   function onDisconnect(notification: any) {

@@ -9,7 +9,9 @@ interface Props {
 
 export function FollowButton({ username, followersName }: Props) {
   return (
-    <Button onClick={() => console.log('follow ' + followersName)}>
+    <Button
+      onClick={() => console.log(`follow ${username} from ${followersName}`)}
+    >
       Follow
     </Button>
   )
