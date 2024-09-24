@@ -11,8 +11,6 @@ export function Header() {
 
   const { profiles, loading, error } = useProfiles(walletAddress || '')
 
-  console.log({ profiles, error })
-
   return (
     <div className="flex items-center justify-between w-full mb-12">
       <h1 className="text-4xl">

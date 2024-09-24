@@ -1,26 +1,17 @@
 'use client'
 
 import { Button } from '@/components/common/button'
-import { getFollowers, getFollowing } from '@/lib/tapestry'
+import { IFollower } from '@/models/followers.models'
 import Link from 'next/link'
 import { useState } from 'react'
 
-export async function FollowList({ username }: { username: string }) {
+interface Props {
+  following: IFollower[]
+  followers: IFollower[]
+}
+
+export function FollowList({ following, followers }: Props) {
   const [followingListSelected, setFollowingListSelected] = useState(true)
-
-  console.log('followingListSelected', followingListSelected)
-
-  const followers = await getFollowers({
-    username,
-  })
-
-  console.log('FOLLOWERS', followers)
-
-  const following = await getFollowing({
-    username,
-  })
-
-  console.log('FOLLOWING', following)
 
   return (
     <div className="flex w-full space-x-6">
@@ -54,7 +45,7 @@ export async function FollowList({ username }: { username: string }) {
   )
 }
 
-function ListEntries({ username }: { username: string }) {
+function ListEntries({ username }: { username: any }) {
   return (
     <li className="ml-4 hover:underline">
       <Link href={`/${username}`}>{username}</Link>

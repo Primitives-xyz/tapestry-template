@@ -53,9 +53,7 @@ export const getFollowers = async ({ username }: { username: string }) => {
     endpoint: `profiles/followers/${username}`,
   })
 
-  console.log('RESPONSE 1', response)
-
-  return response.map((entry) => entry.properties.username)
+  return response
 }
 
 export const getFollowing = async ({ username }: { username: string }) => {
@@ -63,9 +61,7 @@ export const getFollowing = async ({ username }: { username: string }) => {
     endpoint: `profiles/following/${username}`,
   })
 
-  console.log('RESPONSE 2', response)
-
-  return response.map((entry) => entry.properties.username)
+  return response
 }
 
 export const addFollower = async ({
