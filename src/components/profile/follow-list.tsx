@@ -34,7 +34,7 @@ export function FollowList({ following, followers }: Props) {
           {(followingListSelected ? following : followers).map(
             (item, index) => (
               <ul key={index} className="list-disc list-inside">
-                <ListEntries key={index} username={item} />
+                <ListEntries key={index} username={item.properties.username} />
               </ul>
             ),
           )}
@@ -45,7 +45,7 @@ export function FollowList({ following, followers }: Props) {
   )
 }
 
-function ListEntries({ username }: { username: any }) {
+function ListEntries({ username }: { username: string }) {
   return (
     <li className="ml-4 hover:underline">
       <Link href={`/${username}`}>{username}</Link>
