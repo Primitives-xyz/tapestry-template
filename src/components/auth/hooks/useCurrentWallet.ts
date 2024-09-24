@@ -1,3 +1,5 @@
+'use client'
+
 import {
   useUnifiedWallet,
   useUnifiedWalletContext,
@@ -14,12 +16,12 @@ export function useCurrentWallet() {
   }
 
   return {
-    walletAddress,
     walletIsConnected: !!walletAddress,
     wallet,
     publicKey,
     walletName: wallet?.adapter.name,
     walletIcon: wallet?.adapter.icon,
+    walletAddress,
     openWalletConnectModal,
     signMessage,
     walletDisconnect: disconnect,

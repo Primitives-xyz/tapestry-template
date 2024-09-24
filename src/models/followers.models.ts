@@ -1,8 +1,7 @@
 export interface IFollower {
-  keys: string[]
-  length: number
-  _fields: Field[]
-  _fieldLookup: FieldLookup
+  properties: {
+    username: string
+  }
 }
 
 export interface Field {

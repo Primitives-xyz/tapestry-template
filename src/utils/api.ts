@@ -28,7 +28,7 @@ export const getUrlWithQueryParameters = (
 ) => {
   const queryParameters = new URLSearchParams(data).toString()
 
-  return `${endpoint}${!!queryParameters ? '?' + queryParameters : ''}`
+  return `${endpoint}${!!queryParameters ? '&' + queryParameters : ''}`
 }
 
 export const fetchTapestry = async <ResponseType = any, InputType = any>({
@@ -40,13 +40,11 @@ export const fetchTapestry = async <ResponseType = any, InputType = any>({
   endpoint: string
   data?: InputType
 }): Promise<ResponseType> => {
+  endpoint = `${endpoint}?apiKey=${process.env.TAPESTRY_API_KEY}`
+
   if (method === FetchMethod.GET && data) {
     endpoint = getUrlWithQueryParameters(endpoint, data)
   }
-
-  endpoint = getUrlWithQueryParameters(endpoint, {
-    apiKey: process.env.TAPESTRY_API_KEY,
-  })
 
   const url = createURL({
     domain: process.env.TAPESTRY_URL!,
@@ -82,7 +80,7 @@ export const fetchTapestry = async <ResponseType = any, InputType = any>({
       const data = await response.json()
       return data
     } catch (error) {
-      console.log(error)
+      console.error(error)
       return null as ResponseType
     }
   }

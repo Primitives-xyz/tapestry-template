@@ -1,6 +1,6 @@
 export interface IProfileResponse {
   [x: string]: any
-  profile: IProfile[]
+  profile: IProfile
   socialCounts: ISocialCounts
 }
 
@@ -22,7 +22,9 @@ export interface IProfile {
 }
 
 export interface IProperty {
+  id?: string
   username?: string
+  namespace?: string
 }
 
 export interface ISocialCounts {

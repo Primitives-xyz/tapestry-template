@@ -16,7 +16,6 @@ export async function Profile({ username }: Props) {
 
   return (
     <Card>
-      {/* <Log message={data} /> */}
       <div className="flex justify-between items-center">
         <Link href={`/${username}`} className="w-full">
           <div className="flex flex-col justify-center space-y-2 w-full h-full">
@@ -27,7 +26,7 @@ export async function Profile({ username }: Props) {
             </p>
           </div>
         </Link>
-        <FollowButton username="cédrick" followersName={username} />
+        <FollowButton username={username} />
       </div>
     </Card>
   )
