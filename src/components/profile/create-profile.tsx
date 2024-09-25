@@ -7,11 +7,16 @@ import { Input } from '../form/input'
 import { SubmitButton } from '../form/submit-button'
 
 export function CreateProfile() {
-  const { walletAddress } = useCurrentWallet()
+  const { walletAddress, mainUsername, loadingMainUsername } =
+    useCurrentWallet()
+
+  if (loadingMainUsername) {
+    return null
+  }
 
   return (
     <>
-      {walletAddress && (
+      {walletAddress && !mainUsername && (
         <div className="w-1/2">
           <h2 className="text-xl mb-3">Create Profile</h2>
           <Card>

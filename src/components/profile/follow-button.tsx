@@ -2,28 +2,18 @@
 
 import { Button } from '@/components/common/button'
 import { useCurrentWallet } from '../auth/hooks/useCurrentWallet'
-import { useProfiles } from '../auth/hooks/useFindProfiles'
 
 interface Props {
   username: string
 }
 
 export function FollowButton({ username }: Props) {
-  const { walletAddress } = useCurrentWallet()
+  const { mainUsername } = useCurrentWallet()
 
-  const { profiles, loading, error } = useProfiles(walletAddress || '')
-
-  if (loading) return <div>Loading...</div>
-
-  if (!!profiles && profiles.length > 0) {
-    const mainProfile = profiles[0].profile
+  if (mainUsername) {
     return (
       <Button
-        onClick={() =>
-          console.log(
-            `follow ${username} from ${mainProfile.properties.username}`,
-          )
-        }
+        onClick={() => console.log(`follow ${username} from ${mainUsername}`)}
       >
         Follow
       </Button>
