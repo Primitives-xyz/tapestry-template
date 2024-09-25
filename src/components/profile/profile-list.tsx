@@ -13,7 +13,7 @@ export async function ProfilesList() {
       {profiles.map((profile: any, index: number) => {
         return (
           <div className="mb-4" key={index}>
-            <Profile username={profile.properties.username} />
+            <Profile username={profile.properties.username} followers={[]} />
           </div>
         )
       })}

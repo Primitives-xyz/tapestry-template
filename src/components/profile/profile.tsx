@@ -6,7 +6,7 @@ import Link from 'next/link'
 import { Card } from '../common/card'
 interface Props {
   username: string
-  followers: IFollower[]
+  followers?: IFollower[]
 }
 
 export async function Profile({ username, followers }: Props) {
