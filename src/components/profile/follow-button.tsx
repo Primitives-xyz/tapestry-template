@@ -8,15 +8,23 @@ interface Props {
 }
 
 export function FollowButton({ username }: Props) {
-  const { mainUsername } = useCurrentWallet()
+  const { walletAddress, loadingMainUsername } = useCurrentWallet()
 
-  if (mainUsername) {
+  if (walletAddress) {
     return (
-      <Button
-        onClick={() => console.log(`follow ${username} from ${mainUsername}`)}
-      >
-        Follow
-      </Button>
+      <>
+        {loadingMainUsername ? (
+          <p>⌚️</p>
+        ) : (
+          <Button
+            onClick={() =>
+              console.log(`follow ${username} from ${mainUsername}`)
+            }
+          >
+            Follow
+          </Button>
+        )}
+      </>
     )
   }
 
