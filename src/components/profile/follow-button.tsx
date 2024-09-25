@@ -35,7 +35,7 @@ export function FollowButton({ username }: Props) {
     return null
   }
 
-  if (followersList?.includes(username)) {
+  if (followersList?.includes(mainUsername)) {
     return <UserRoundCheck size={20} />
   }
 
