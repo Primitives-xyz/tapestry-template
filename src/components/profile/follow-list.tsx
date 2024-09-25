@@ -1,6 +1,7 @@
 'use client'
 
 import { Button } from '@/components/common/button'
+import { Card } from '@/components/common/card'
 import { IFollower } from '@/models/followers.models'
 import Link from 'next/link'
 import { useState } from 'react'
@@ -14,8 +15,8 @@ export function FollowList({ following, followers }: Props) {
   const [followingListSelected, setFollowingListSelected] = useState(true)
 
   return (
-    <div className="flex w-full space-x-6">
-      <div className="w-1/2 flex flex-col border rounded mt-6">
+    <div className="flex w-full space-x-4 mt-4">
+      <Card className="w-1/2">
         <div className="w-full flex justify-center py-4 space-x-6">
           <Button
             onClick={() => setFollowingListSelected(true)}
@@ -39,8 +40,8 @@ export function FollowList({ following, followers }: Props) {
             ),
           )}
         </div>
-      </div>
-      <div className="w-1/2 flex flex-col border rounded mt-6"></div>
+      </Card>
+      <Card className="w-1/2 flex items-center justify-center">🔜</Card>
     </div>
   )
 }
