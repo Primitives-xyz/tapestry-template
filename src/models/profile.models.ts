@@ -1,6 +1,7 @@
 export interface IProfileResponse {
   [x: string]: any
-  profile: IProfile
+  profile: IProperty
+  walletAddress: string | undefined
   socialCounts: ISocialCounts
 }
 

@@ -11,13 +11,10 @@ export async function createProfileAction(formData: FormData) {
     return
   }
 
-  const data = await createProfile({
+  const createProfileResponse = await createProfile({
     username,
     ownerWalletAddress,
   })
 
-  console.log(data)
-
-  // mutate data
-  // revalidate cache
+  return createProfileResponse
 }
