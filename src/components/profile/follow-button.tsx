@@ -8,7 +8,8 @@ interface Props {
 }
 
 export function FollowButton({ username }: Props) {
-  const { walletAddress, loadingMainUsername } = useCurrentWallet()
+  const { walletAddress, mainUsername, loadingMainUsername } =
+    useCurrentWallet()
 
   if (walletAddress) {
     return (
