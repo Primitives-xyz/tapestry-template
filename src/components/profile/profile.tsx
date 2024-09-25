@@ -1,22 +1,15 @@
 import { FollowButton } from '@/components/profile/follow-button'
 import { getProfileInfo } from '@/lib/tapestry'
-import { IFollower } from '@/models/followers.models'
-import { UserRoundCheck } from 'lucide-react'
 import Link from 'next/link'
 import { Card } from '../common/card'
 interface Props {
   username: string
-  followers?: IFollower[]
 }
 
-export async function Profile({ username, followers }: Props) {
+export async function Profile({ username }: Props) {
   const data = await getProfileInfo({
     username,
   })
-
-  const followersList = followers?.map(
-    (item, index) => item.properties.username,
-  )
 
   return (
     <Card>
@@ -30,11 +23,7 @@ export async function Profile({ username, followers }: Props) {
             </p>
           </div>
         </Link>
-        {followersList?.includes(username) ? (
-          <UserRoundCheck size={20} />
-        ) : (
-          <FollowButton username={username} />
-        )}
+        <FollowButton username={username} />
       </div>
     </Card>
   )

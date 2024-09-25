@@ -17,7 +17,7 @@ export async function ProfileContent({ username }: Props) {
 
   return (
     <div>
-      <Profile username={username} followers={followers} />
+      <Profile username={username} />
       <FollowList followers={followers} following={following} />
     </div>
   )
