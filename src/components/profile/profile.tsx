@@ -17,6 +17,7 @@ export async function Profile({ username }: Props) {
         <Link href={`/${username}`} className="w-full font-bold">
           <div className="flex flex-col justify-center space-y-2 w-full h-full">
             <h2 className="text-xl">{username}</h2>
+            <span className="text-sm text-gray-500">{data.walletAddress}</span>
             <p>
               {data.socialCounts.followers} followers |{' '}
               {data.socialCounts.following} following
