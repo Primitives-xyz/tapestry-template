@@ -1,7 +1,7 @@
 import { FollowButton } from '@/components/profile/follow-button'
 import { getProfileInfo } from '@/lib/tapestry'
 import { IFollower } from '@/models/followers.models'
-import { Check } from 'lucide-react'
+import { UserRoundCheck } from 'lucide-react'
 import Link from 'next/link'
 import { Card } from '../common/card'
 interface Props {
@@ -31,7 +31,7 @@ export async function Profile({ username, followers }: Props) {
           </div>
         </Link>
         {followersList?.includes(username) ? (
-          <Check size={20} />
+          <UserRoundCheck size={20} />
         ) : (
           <FollowButton username={username} />
         )}
