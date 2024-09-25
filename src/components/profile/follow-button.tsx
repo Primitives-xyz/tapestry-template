@@ -1,6 +1,7 @@
 'use client'
 
 import { Button } from '@/components/common/button'
+import { useFollowUser } from '@/components/profile/hooks/use-follow-user'
 import { useCurrentWallet } from '../auth/hooks/useCurrentWallet'
 
 interface Props {
@@ -10,34 +11,41 @@ interface Props {
 export function FollowButton({ username }: Props) {
   const { walletAddress, mainUsername, loadingMainUsername } =
     useCurrentWallet()
+  const { followUser, loading, error, success } = useFollowUser()
 
-  if (walletAddress) {
-    return (
-      <>
-        {loadingMainUsername ? (
-          <p>⌚️</p>
-        ) : (
-          <Button
-            onClick={() =>
-              console.log(`follow ${username} from ${mainUsername}`)
-            }
-          >
-            Follow
-          </Button>
-        )}
-      </>
-    )
+  const handleFollow = async () => {
+    if (mainUsername && username) {
+      await followUser({
+        followerUsername: mainUsername,
+        followeeUsername: username,
+      })
+    }
   }
 
-  return null
-}
+  if (!walletAddress) {
+    return null
+  }
 
-// TODO: Hook up to backend
-// const url = `${BASE_TAPESTRY_URL}followers/add?apiKey=${process.env.TAPESTRY_API_KEY}`
-// const bodyString = JSON.stringify({
-//   shouldWriteOnChain: true,
-//   blockchain: 'Solana',
-//   startId: followerUser.username, //moi
-//   endId: followeeUser.username,   //celui que je veux suivre
-//   properties: [],
-// })
+  return (
+    <>
+      {loadingMainUsername ? (
+        <p>⌚️</p>
+      ) : (
+        <Button onClick={handleFollow} disabled={loading}>
+          {loading ? 'Following...' : 'Follow'}
+        </Button>
+      )}
+
+      {success && (
+        <div className="alert alert-success">
+          <strong>Success!</strong> Followed {username} successfully!
+        </div>
+      )}
+      {error && (
+        <div className="alert alert-error">
+          <strong>Error:</strong> {error}
+        </div>
+      )}
+    </>
+  )
+}
