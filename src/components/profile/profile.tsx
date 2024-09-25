@@ -1,18 +1,21 @@
 import { FollowButton } from '@/components/profile/follow-button'
 import { getProfileInfo } from '@/lib/tapestry'
+import { IFollower } from '@/models/followers.models'
 import Link from 'next/link'
 import { Card } from '../common/card'
 interface Props {
   username: string
+  followers: IFollower[]
 }
 
-export async function Profile({ username }: Props) {
+export async function Profile({ username, followers }: Props) {
   const data = await getProfileInfo({
     username,
   })
 
-  //https://api.usetapestry.dev/docs
-  //https://api.usetapestry.dev/docs#tag/followers/POST/followers/add
+  const followersList = followers?.map(
+    (item, index) => item.properties.username,
+  )
 
   return (
     <Card>
@@ -26,7 +29,11 @@ export async function Profile({ username }: Props) {
             </p>
           </div>
         </Link>
-        <FollowButton username={username} />
+        {followersList?.includes(username) ? (
+          <span>✅</span>
+        ) : (
+          <FollowButton username={username} />
+        )}
       </div>
     </Card>
   )

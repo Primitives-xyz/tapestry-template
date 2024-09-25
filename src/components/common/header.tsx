@@ -4,6 +4,7 @@ import { useCurrentWallet } from '@/components/auth/hooks/useCurrentWallet'
 import { Button } from '@/components/common/button'
 import { abbreviateWalletAddress } from '@/components/common/tools'
 import { UnifiedWalletButton } from '@jup-ag/wallet-adapter'
+import { LogOut } from 'lucide-react'
 import Link from 'next/link'
 
 export function Header() {
@@ -27,7 +28,9 @@ export function Header() {
                 })}
               </p>
             </div>
-            <Button onClick={walletDisconnect}>❌</Button>
+            <Button onClick={walletDisconnect}>
+              <LogOut size={20} />
+            </Button>
           </div>
         ) : (
           <UnifiedWalletButton />

@@ -1,7 +1,9 @@
 'use client'
 
+import { Alert } from '@/components/common/alert'
 import { Button } from '@/components/common/button'
 import { useFollowUser } from '@/components/profile/hooks/use-follow-user'
+import { LoaderCircle } from 'lucide-react'
 import { useCurrentWallet } from '../auth/hooks/useCurrentWallet'
 
 interface Props {
@@ -29,7 +31,9 @@ export function FollowButton({ username }: Props) {
   return (
     <>
       {loadingMainUsername ? (
-        <p>⌚️</p>
+        <span>
+          <LoaderCircle />
+        </span>
       ) : (
         <Button onClick={handleFollow} disabled={loading}>
           {loading ? 'Following...' : 'Follow'}
@@ -37,14 +41,19 @@ export function FollowButton({ username }: Props) {
       )}
 
       {success && (
-        <div className="alert alert-success">
-          <strong>Success!</strong> Followed {username} successfully!
-        </div>
+        <Alert
+          type="success"
+          message="Followed user successfully!"
+          duration={5000}
+        />
       )}
+
       {error && (
-        <div className="alert alert-error">
-          <strong>Error:</strong> {error}
-        </div>
+        <Alert
+          type="error"
+          message="There was an error following the user."
+          duration={5000}
+        />
       )}
     </>
   )
