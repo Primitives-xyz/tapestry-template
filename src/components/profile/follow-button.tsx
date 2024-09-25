@@ -1,44 +1,71 @@
 'use client'
 
+import { Alert } from '@/components/common/alert'
 import { Button } from '@/components/common/button'
+import { useFollowUser } from '@/components/profile/hooks/use-follow-user'
+import { useGetFollowers } from '@/components/profile/hooks/use-get-followers'
+import { LoaderCircle, UserRoundCheck } from 'lucide-react'
 import { useCurrentWallet } from '../auth/hooks/useCurrentWallet'
-import { useProfiles } from '../auth/hooks/useFindProfiles'
 
 interface Props {
   username: string
 }
 
 export function FollowButton({ username }: Props) {
-  const { walletAddress } = useCurrentWallet()
+  const { walletAddress, mainUsername, loadingMainUsername } =
+    useCurrentWallet()
+  const { followUser, loading, error, success } = useFollowUser()
 
-  const { profiles, loading, error } = useProfiles(walletAddress || '')
+  const { followers } = useGetFollowers(username)
 
-  if (loading) return <div>Loading...</div>
+  const followersList = followers?.map(
+    (item, index) => item.properties.username,
+  )
 
-  if (!!profiles && profiles.length > 0) {
-    const mainProfile = profiles[0].profile
-    return (
-      <Button
-        onClick={() =>
-          console.log(
-            `follow ${username} from ${mainProfile.properties.username}`,
-          )
-        }
-      >
-        Follow
-      </Button>
-    )
+  const handleFollow = async () => {
+    if (mainUsername && username) {
+      await followUser({
+        followerUsername: mainUsername,
+        followeeUsername: username,
+      })
+    }
   }
 
-  return null
-}
+  if (!walletAddress) {
+    return null
+  }
 
-// TODO: Hook up to backend
-// const url = `${BASE_TAPESTRY_URL}followers/add?apiKey=${process.env.TAPESTRY_API_KEY}`
-// const bodyString = JSON.stringify({
-//   shouldWriteOnChain: true,
-//   blockchain: 'Solana',
-//   startId: followerUser.username, //moi
-//   endId: followeeUser.username,   //celui que je veux suivre
-//   properties: [],
-// })
+  if (followersList?.includes(mainUsername)) {
+    return <UserRoundCheck size={20} />
+  }
+
+  return (
+    <>
+      {loadingMainUsername ? (
+        <span>
+          <LoaderCircle />
+        </span>
+      ) : (
+        <Button onClick={handleFollow} disabled={loading}>
+          {loading ? 'Following...' : 'Follow'}
+        </Button>
+      )}
+
+      {success && (
+        <Alert
+          type="success"
+          message="Followed user successfully!"
+          duration={5000}
+        />
+      )}
+
+      {error && (
+        <Alert
+          type="error"
+          message="There was an error following the user."
+          duration={5000}
+        />
+      )}
+    </>
+  )
+}
