@@ -10,8 +10,6 @@ import Link from 'next/link'
 export function Header() {
   const { walletAddress, mainUsername, walletDisconnect } = useCurrentWallet()
 
-  console.log(walletAddress, mainUsername)
-
   return (
     <div className="flex justify-between w-full mb-12 h-[60px]">
       <h1 className="text-4xl">
