@@ -29,7 +29,7 @@ export const getSuggestedProfiles = async ({
   ownerWalletAddress: string
 }) => {
   const response = await fetchTapestry<any>({
-    endpoint: `profiles/suggestedProfiles/${ownerWalletAddress}`,
+    endpoint: `profiles/suggested/${ownerWalletAddress}`,
   })
 
   return response
@@ -49,7 +49,7 @@ export const getProfilesList = async ({}: {}) => {
 
 export const getFollowers = async ({ username }: { username: string }) => {
   const response = await fetchTapestry({
-    endpoint: `profiles/followers/${username}`,
+    endpoint: `profiles/${username}/followers`,
   })
 
   return response
@@ -57,7 +57,7 @@ export const getFollowers = async ({ username }: { username: string }) => {
 
 export const getFollowing = async ({ username }: { username: string }) => {
   const response = await fetchTapestry({
-    endpoint: `profiles/following/${username}`,
+    endpoint: `profiles/${username}/following`,
   })
 
   return response

@@ -13,7 +13,7 @@ export const useGetFollowers = (username: string) => {
       setError(null)
 
       try {
-        const response = await fetch(`/api/profiles/followers/${username}`, {
+        const response = await fetch(`/api/profiles/${username}/followers`, {
           method: 'GET',
         })
 
