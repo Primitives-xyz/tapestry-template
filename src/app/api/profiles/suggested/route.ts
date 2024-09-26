@@ -15,7 +15,7 @@ export async function GET(req: NextRequest) {
 
   try {
     const response = await fetchTapestry({
-      endpoint: `profiles/suggestedProfiles/${walletAddress}`,
+      endpoint: `profiles/suggested/${walletAddress}`,
       method: FetchMethod.GET,
     })
 

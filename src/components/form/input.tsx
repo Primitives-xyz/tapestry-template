@@ -17,7 +17,7 @@ export function Input({
     <input
       type={type}
       value={value}
-      className="bg-transparent border border-foreground p-2"
+      className="bg-transparent border border-foreground p-2 w-full"
       placeholder={placeholder}
       name={name}
       onChange={onChange}

@@ -1,11 +1,11 @@
 import { useState } from 'react'
 
-export const useSuggestedProfiles = () => {
+export const useSuggested = () => {
   const [profiles, setProfiles] = useState<any>(null)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
 
-  const getSuggestedProfiles = async (walletAddress: string) => {
+  const getSuggested = async (walletAddress: string) => {
     if (!walletAddress) {
       setError('Owner wallet address is required')
       return
@@ -16,7 +16,7 @@ export const useSuggestedProfiles = () => {
 
     try {
       const response = await fetch(
-        `/api/profiles/suggestedProfiles?ownerWalletAddress=${walletAddress}`,
+        `/api/profiles/suggested?walletAddress=${walletAddress}`,
       )
 
       if (!response.ok) {
@@ -36,6 +36,6 @@ export const useSuggestedProfiles = () => {
     profiles,
     loading,
     error,
-    getSuggestedProfiles,
+    getSuggested,
   }
 }
