@@ -16,7 +16,7 @@ export function ProfileInfos({ username, walletAddress }: Props) {
       </Link>
       <div className="flex items-center space-x-4">
         <p className="text-sm text-gray-500">{walletAddress}</p>
-        <CopyPaste content={walletAddress} />
+        {walletAddress && <CopyPaste content={walletAddress} />}
       </div>
     </>
   )

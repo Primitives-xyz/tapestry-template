@@ -2,9 +2,10 @@
 
 import { Alert } from '@/components/common/alert'
 import { Button } from '@/components/common/button'
+import { LoadCircle } from '@/components/common/load-circle'
 import { useFollowUser } from '@/components/profile/hooks/use-follow-user'
 import { useGetFollowers } from '@/components/profile/hooks/use-get-followers'
-import { LoaderCircle, UserRoundCheck } from 'lucide-react'
+import { UserRoundCheck } from 'lucide-react'
 import { useCurrentWallet } from '../auth/hooks/use-current-wallet'
 
 interface Props {
@@ -43,7 +44,7 @@ export function FollowButton({ username }: Props) {
     <>
       {loadingMainUsername ? (
         <span>
-          <LoaderCircle />
+          <LoadCircle />
         </span>
       ) : (
         <Button onClick={handleFollow} disabled={loading}>
