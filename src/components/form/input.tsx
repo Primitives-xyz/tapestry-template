@@ -3,9 +3,16 @@ interface Props {
   type?: string
   placeholder?: string
   value?: string
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
 }
 
-export function Input({ name, placeholder, type = 'text', value }: Props) {
+export function Input({
+  name,
+  placeholder,
+  type = 'text',
+  value,
+  onChange,
+}: Props) {
   return (
     <input
       type={type}
@@ -13,6 +20,7 @@ export function Input({ name, placeholder, type = 'text', value }: Props) {
       className="bg-transparent border border-foreground p-2"
       placeholder={placeholder}
       name={name}
+      onChange={onChange}
     />
   )
 }
