@@ -16,7 +16,7 @@ export async function GET(req: NextRequest) {
 
   try {
     const data = await fetchTapestry<any>({
-      endpoint: 'profiles/findAllProfiles',
+      endpoint: 'profiles',
       method: FetchMethod.GET,
       data: {
         walletAddress,

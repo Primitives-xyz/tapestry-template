@@ -5,7 +5,7 @@ import { Button } from '@/components/common/button'
 import { useFollowUser } from '@/components/profile/hooks/use-follow-user'
 import { useGetFollowers } from '@/components/profile/hooks/use-get-followers'
 import { LoaderCircle, UserRoundCheck } from 'lucide-react'
-import { useCurrentWallet } from '../auth/hooks/useCurrentWallet'
+import { useCurrentWallet } from '../auth/hooks/use-current-wallet'
 
 interface Props {
   username: string

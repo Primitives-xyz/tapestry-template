@@ -1,6 +1,6 @@
 'use client'
 
-import { useProfiles } from '@/components/auth/hooks/useFindProfiles'
+import { useGetProfiles } from '@/components/auth/hooks/use-get-profiles'
 import {
   useUnifiedWallet,
   useUnifiedWalletContext,
@@ -13,7 +13,7 @@ export function useCurrentWallet() {
 
   const walletAddress = publicKey?.toBase58() || null
 
-  const { profiles, loading } = useProfiles(walletAddress || '')
+  const { profiles, loading } = useGetProfiles(walletAddress || '')
 
   function openWalletConnectModal() {
     setShowModal(true)

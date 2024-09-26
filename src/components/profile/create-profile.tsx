@@ -1,7 +1,8 @@
 'use client'
 
 import { createProfileAction } from '@/actions/create-profile-action'
-import { useCurrentWallet } from '@/components/auth/hooks/useCurrentWallet'
+
+import { useCurrentWallet } from '@/components/auth/hooks/use-current-wallet'
 import { Card } from '../common/card'
 import { Input } from '../form/input'
 import { SubmitButton } from '../form/submit-button'

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 
-export const useProfiles = (walletAddress: string) => {
+export const useGetProfiles = (walletAddress: string) => {
   const [profiles, setProfiles] = useState<any>(null)
   const [loading, setLoading] = useState<boolean>(true)
   const [error, setError] = useState<any>(null)
@@ -11,9 +11,7 @@ export const useProfiles = (walletAddress: string) => {
     const fetchProfiles = async () => {
       setLoading(true)
       try {
-        const res = await fetch(
-          `/api/findAllProfiles?walletAddress=${walletAddress}`,
-        )
+        const res = await fetch(`/api/profiles?walletAddress=${walletAddress}`)
         if (!res.ok) {
           const errorData = await res.json()
           throw new Error(errorData.error || 'Failed to fetch profiles')

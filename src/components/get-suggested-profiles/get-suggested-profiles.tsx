@@ -1,6 +1,6 @@
 'use client'
 
-import { useCurrentWallet } from '@/components/auth/hooks/useCurrentWallet'
+import { useCurrentWallet } from '@/components/auth/hooks/use-current-wallet'
 import { Card } from '@/components/common/card'
 import { Input } from '@/components/form/input'
 import { SubmitButton } from '@/components/form/submit-button'

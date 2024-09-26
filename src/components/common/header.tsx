@@ -1,6 +1,6 @@
 'use client'
 
-import { useCurrentWallet } from '@/components/auth/hooks/useCurrentWallet'
+import { useCurrentWallet } from '@/components/auth/hooks/use-current-wallet'
 import { Button } from '@/components/common/button'
 import { abbreviateWalletAddress } from '@/components/common/tools'
 import { UnifiedWalletButton } from '@jup-ag/wallet-adapter'
