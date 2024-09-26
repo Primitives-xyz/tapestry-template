@@ -13,7 +13,7 @@ export async function GET(
 
   try {
     const response = await fetchTapestry({
-      endpoint: `profiles/followers/${username}`,
+      endpoint: `profiles/${username}/followers`,
       method: FetchMethod.GET,
     })
 
