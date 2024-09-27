@@ -36,14 +36,19 @@ export const getSuggestedProfiles = async ({
 }
 
 export const getProfileInfo = async ({ username }: { username: string }) => {
-  return await fetchTapestry<IProfileResponse>({
-    endpoint: `profiles/${username}`,
-  })
+  try {
+    return await fetchTapestry<IProfileResponse>({
+      endpoint: `profiles/${username}`,
+    })
+  } catch (error) {
+    console.error('[getProfileInfo Error]', error)
+    return null
+  }
 }
 
 export const getProfilesList = async ({}: {}) => {
   return await fetchTapestry<any>({
-    endpoint: `profiles/all`,
+    endpoint: `profiles`,
   })
 }
 

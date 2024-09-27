@@ -11,6 +11,10 @@ export async function Profile({ username }: Props) {
     username,
   })
 
+  if (!data) {
+    return null
+  }
+
   return (
     <Card>
       <div className="flex justify-between items-center">
