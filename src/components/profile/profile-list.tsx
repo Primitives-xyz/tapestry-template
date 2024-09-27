@@ -6,7 +6,6 @@ export async function ProfilesList() {
 
   const profiles = data.profiles
 
-  console.log('profile', profiles)
   return (
     <div>
       {profiles.map((profile: any, index: number) => {
