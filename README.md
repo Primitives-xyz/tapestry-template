@@ -6,7 +6,7 @@ You'll need to add your api key and the tapestry URL to your environment variabl
 
 ```bash
 TAPESTRY_API_KEY=xxx
-TAPESTRY_URL=https://protocol-server.fly.dev
+TAPESTRY_URL=https://protocol-server.fly.dev/v1
 
 ```
 
