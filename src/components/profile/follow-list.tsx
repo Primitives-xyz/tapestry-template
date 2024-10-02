@@ -35,7 +35,7 @@ export function FollowList({ following, followers }: Props) {
           {(followingListSelected ? following : followers).map(
             (item, index) => (
               <ul key={index} className="list-disc list-inside">
-                <ListEntries key={index} username={item.properties.username} />
+                <ListEntries key={index} username={item.username} />
               </ul>
             ),
           )}

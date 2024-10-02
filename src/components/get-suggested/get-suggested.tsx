@@ -73,7 +73,7 @@ export function GetSuggested() {
         <div className="mt-4">
           {!!profiles &&
             Object.entries(profiles).map(([key, item]: [string, any]) => {
-              const username = item.profile.properties.username
+              const username = item.profile.username
               return (
                 <Link href={`/${username}`} key={key}>
                   <Card>

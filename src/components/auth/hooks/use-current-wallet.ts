@@ -26,7 +26,7 @@ export function useCurrentWallet() {
     walletName: wallet?.adapter.name,
     walletIcon: wallet?.adapter.icon,
     walletAddress,
-    mainUsername: profiles?.[0]?.profile?.properties?.username,
+    mainUsername: profiles?.[0]?.profile?.username,
     loadingMainUsername: loading,
     openWalletConnectModal,
     signMessage,

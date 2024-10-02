@@ -1,6 +1,5 @@
 export interface IProfileResponse {
   [x: string]: any
-  profile: IProperty
   walletAddress?: string | undefined
   socialCounts: ISocialCounts
 }
@@ -8,7 +7,6 @@ export interface IProfileResponse {
 export interface IProfile {
   id: number
   label: string
-  properties: IProperty
   entityType: string
   graphAddress: string
   fromGraphAddress: string
@@ -20,11 +18,6 @@ export interface IProfile {
   team_id: number
   crypto: string
   username: string
-}
-
-export interface IProperty {
-  id?: string
-  username?: string
   namespace?: string
 }
 

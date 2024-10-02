@@ -19,9 +19,7 @@ export function FollowButton({ username }: Props) {
 
   const { followers } = useGetFollowers(username)
 
-  const followersList = followers?.map(
-    (item, index) => item.properties.username,
-  )
+  const followersList = followers?.map((item) => item.username)
 
   const handleFollow = async () => {
     if (mainUsername && username) {
