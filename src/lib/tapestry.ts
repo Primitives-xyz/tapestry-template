@@ -67,3 +67,30 @@ export const getFollowing = async ({ username }: { username: string }) => {
 
   return response
 }
+
+export const createComment = async ({
+  profileId,
+  contentId,
+  text,
+  commentId
+}: {
+  profileId: string
+  contentId: string
+  text: string
+  commentId?: string
+}) => {
+  const createCommentResponse = await fetchTapestry({
+    endpoint: 'comments',
+    method: FetchMethod.POST,
+    data: {
+      contentId,
+      profileId,
+      text,
+      commentId
+    },
+  })
+
+  console.log(createCommentResponse)
+
+  return createCommentResponse
+}
