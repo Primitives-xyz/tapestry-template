@@ -1,5 +1,8 @@
 export interface IComment {
-
+    namespace: string
+    created_at: string
+    id: string
+    text: string
 }
 
 export interface ICreateCommentInput {
@@ -10,10 +13,5 @@ export interface ICreateCommentInput {
 }
 
 export interface ICreateCommentResponse {
-    comment: {
-        namespace: string
-        created_at: string
-        id: string
-        text: string
-    }
+    comment: IComment
 }
