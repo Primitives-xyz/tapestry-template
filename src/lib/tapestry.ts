@@ -1,3 +1,4 @@
+import { ICreateCommentInput, ICreateCommentResponse } from '@/models/comment.models'
 import { IProfileResponse } from '@/models/profile.models'
 import { FetchMethod, fetchTapestry } from '@/utils/api'
 
@@ -73,13 +74,8 @@ export const createComment = async ({
   contentId,
   text,
   commentId
-}: {
-  profileId: string
-  contentId: string
-  text: string
-  commentId?: string
-}) => {
-  const createCommentResponse = await fetchTapestry({
+}: ICreateCommentInput) => {
+  const createCommentResponse = await fetchTapestry<ICreateCommentResponse, ICreateCommentInput>({
     endpoint: 'comments',
     method: FetchMethod.POST,
     data: {
