@@ -59,21 +59,6 @@ export const AppWalletProvider: React.FC<{ children: React.ReactNode }> = ({
     ].filter((item) => item && item.name && item.icon) as Adapter[]
   }, [])
 
-  // function onConnect(notification: any) {
-  //   console.log('Successfully connected: ', notification)
-  // }
-
-  // function onDisconnect(notification: any) {
-  //   console.log('Disconnected: ', notification)
-  // }
-
-  // function onConnecting(notification: any) {
-  //   console.log('Connecting: ', notification)
-  // }
-
-  // function onNotInstalled(notification: any) {
-  //   console.log('Wallet not installed: ', notification)
-  // }
 
   const params: Omit<Parameters<typeof UnifiedWalletProvider>[0], 'children'> =
     useMemo(
