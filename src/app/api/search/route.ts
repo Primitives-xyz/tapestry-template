@@ -1,5 +1,6 @@
-import { socialfi } from '@/utils/socialfi'
+import { FetchMethod, fetchTapestry } from '@/utils/api'
 import { NextRequest, NextResponse } from 'next/server'
+import { SearchProfilesResponseSchema } from 'socialfi'
 
 export async function POST(req: NextRequest) {
   const formData = await req.formData()
@@ -14,13 +15,19 @@ export async function POST(req: NextRequest) {
   }
 
   try {
-    const response = await socialfi.search.profilesList({
-      apiKey: process.env.TAPESTRY_API_KEY || '',
-      query,
-      includeExternalProfiles: 'false',
-      page: '1',
-      pageSize: '50',
+    const response = await fetchTapestry<SearchProfilesResponseSchema>({
+      endpoint: 'search/profiles',
+      method: FetchMethod.GET,
+      data: {
+        query,
+        includeExternalProfiles: false,
+        page: '1',
+        pageSize: '50',
+      },
     })
+
+    console.log('SEARCH PROFILES RESPONSE')
+    console.log(response)
 
     return NextResponse.json(response)
   } catch (error: any) {
