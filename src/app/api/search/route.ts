@@ -26,9 +26,6 @@ export async function POST(req: NextRequest) {
       },
     })
 
-    console.log('SEARCH PROFILES RESPONSE')
-    console.log(response)
-
     return NextResponse.json(response)
   } catch (error: any) {
     console.error('Error searching profiles:', error)
