@@ -11,7 +11,6 @@ export async function GET(req: Request) {
 
   try {
     const response = await socialfi.profiles.profilesDetail({
-      apiKey: process.env.TAPESTRY_API_KEY || '',
       id: username,
     })
 

@@ -15,7 +15,6 @@ export async function GET(req: NextRequest) {
 
   try {
     const response = await socialfi.followers.stateList({
-      apiKey: process.env.TAPESTRY_API_KEY || '',
       startId,
       endId,
     })

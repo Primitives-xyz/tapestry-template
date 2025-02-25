@@ -15,7 +15,6 @@ export async function GET(req: NextRequest) {
 
   try {
     const response = await socialfi.creators.inviteDetail({
-      apiKey: process.env.TAPESTRY_API_KEY || '',
       identifier: walletAddress,
     })
 
