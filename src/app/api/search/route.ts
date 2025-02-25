@@ -15,7 +15,6 @@ export async function POST(req: NextRequest) {
 
   try {
     const response = await socialfi.search.profilesList({
-      apiKey: process.env.TAPESTRY_API_KEY || '',
       query,
       includeExternalProfiles: 'false',
       page: '1',

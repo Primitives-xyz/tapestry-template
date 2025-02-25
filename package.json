@@ -26,7 +26,7 @@
     "prettier-plugin-organize-imports": "^4.1.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "socialfi": "^0.1.7",
+    "socialfi": "^0.1.8",
     "tailwind-merge": "^3.0.1"
   },
   "devDependencies": {
