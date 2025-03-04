@@ -1,4 +1,4 @@
-import { fetchTapestry } from '@/utils/api'
+import { socialfi } from '@/utils/socialfi'
 import { NextRequest, NextResponse } from 'next/server'
 
 export async function GET(req: NextRequest) {
@@ -14,17 +14,10 @@ export async function GET(req: NextRequest) {
   }
 
   try {
-    // const response = await socialfi.followers.stateList({
-    //   startId,
-    //   endId,
-    // })
-
-    const response = await fetchTapestry({
-      endpoint: 'followers/state',
-      data: {
-        startId,
-        endId,
-      },
+    const response = await socialfi.followers.stateList({
+      apiKey: process.env.TAPESTRY_API_KEY || '',
+      startId,
+      endId,
     })
 
     return NextResponse.json(response)

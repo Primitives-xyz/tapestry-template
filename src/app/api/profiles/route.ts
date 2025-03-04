@@ -1,5 +1,4 @@
-import { IProfileList } from '@/models/profile.models'
-import { FetchMethod, fetchTapestry } from '@/utils/api'
+import { socialfi } from '@/utils/socialfi'
 import { NextRequest, NextResponse } from 'next/server'
 
 export async function GET(req: NextRequest) {
@@ -14,18 +13,9 @@ export async function GET(req: NextRequest) {
   }
 
   try {
-    // const response = await socialfi.api.profiles.profilesList({
-    //   page: '0',
-    //   pageSize: '10',
-    //   walletAddress,
-    // })
-
-    const response = await fetchTapestry<IProfileList[]>({
-      endpoint: 'profiles',
-      method: FetchMethod.GET,
-      data: {
-        walletAddress,
-      },
+    const response = await socialfi.profiles.profilesList({
+      apiKey: process.env.TAPESTRY_API_KEY || '',
+      walletAddress,
     })
 
     return NextResponse.json(response)

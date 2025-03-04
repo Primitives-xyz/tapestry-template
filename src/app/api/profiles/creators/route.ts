@@ -14,10 +14,6 @@ export async function GET(req: NextRequest) {
   }
 
   try {
-    // const response = await socialfi.creators.inviteDetail({
-    //   identifier: walletAddress,
-    // })
-
     const response = await fetchTapestry({
       endpoint: `creators/invite/${walletAddress}`,
     })

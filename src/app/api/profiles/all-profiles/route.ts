@@ -1,17 +1,10 @@
-import { IProfileList } from '@/models/profile.models'
-import { FetchMethod, fetchTapestry } from '@/utils/api'
+import { socialfi } from '@/utils/socialfi'
 import { NextResponse } from 'next/server'
 
 export async function GET() {
   try {
-    // const response = await socialfi.api.profiles.profilesList({
-    //   page: '0',
-    //   pageSize: '10',
-    // })
-
-    const response = await fetchTapestry<IProfileList[]>({
-      endpoint: 'profiles',
-      method: FetchMethod.GET,
+    const response = await socialfi.profiles.profilesList({
+      apiKey: process.env.TAPESTRY_API_KEY || '',
     })
 
     return NextResponse.json(response)

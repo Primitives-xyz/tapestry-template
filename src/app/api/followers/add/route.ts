@@ -1,4 +1,4 @@
-import { FetchMethod, fetchTapestry } from '@/utils/api'
+import { socialfi } from '@/utils/socialfi'
 import { NextRequest, NextResponse } from 'next/server'
 
 interface FollowRequestBody {
@@ -17,22 +17,15 @@ export async function POST(req: NextRequest) {
       )
     }
 
-    // const response = await socialfi.followers.postFollowers(
-    //   {},
-    //   {
-    //     startId: followerUser.username,
-    //     endId: followeeUser.username,
-    //   },
-    // )
-
-    const response = await fetchTapestry({
-      endpoint: 'followers/add',
-      method: FetchMethod.POST,
-      data: {
+    const response = await socialfi.followers.postFollowers(
+      {
+        apiKey: process.env.TAPESTRY_API_KEY || '',
+      },
+      {
         startId: followerUser.username,
         endId: followeeUser.username,
       },
-    })
+    )
 
     return NextResponse.json(response)
   } catch (error: any) {

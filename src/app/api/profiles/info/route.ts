@@ -1,4 +1,4 @@
-import { FetchMethod, fetchTapestry } from '@/utils/api'
+import { socialfi } from '@/utils/socialfi'
 import { NextResponse } from 'next/server'
 
 export async function GET(req: Request) {
@@ -10,12 +10,9 @@ export async function GET(req: Request) {
   }
 
   try {
-    // const response = await socialfi.profiles.profilesDetail({
-    //   id: username,
-    // })
-
-    const response = await fetchTapestry({
-      endpoint: `profiles/${username}`,
+    const response = await socialfi.profiles.profilesDetail({
+      apiKey: process.env.TAPESTRY_API_KEY || '',
+      id: username,
     })
 
     return NextResponse.json(response)
@@ -38,11 +35,13 @@ export async function PUT(req: Request) {
   }
 
   try {
-    const response = await fetchTapestry({
-      endpoint: `profiles/${username}`,
-      method: FetchMethod.PUT,
-      data: body,
-    })
+    const response = await socialfi.profiles.profilesUpdate(
+      {
+        apiKey: process.env.TAPESTRY_API_KEY || '',
+        id: username,
+      },
+      body,
+    )
 
     return NextResponse.json(response)
   } catch (error: any) {
