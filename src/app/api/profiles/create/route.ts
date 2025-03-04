@@ -1,5 +1,5 @@
+import { socialfi } from '@/utils/socialfi'
 import { NextRequest, NextResponse } from 'next/server'
-import { SocialFi } from 'socialfi'
 
 export async function POST(req: NextRequest) {
   const formData = await req.formData()
@@ -13,11 +13,7 @@ export async function POST(req: NextRequest) {
     )
   }
   try {
-    const client = new SocialFi({
-      baseURL: process.env.TAPESTRY_URL,
-    })
-
-    const profile = await client.profiles.findOrCreate(
+    const profile = await socialfi.profiles.findOrCreateCreate(
       {
         apiKey: process.env.TAPESTRY_API_KEY || '',
       },

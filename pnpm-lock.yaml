@@ -60,8 +60,8 @@ dependencies:
     specifier: ^19.0.0
     version: 19.0.0(react@19.0.0)
   socialfi:
-    specifier: ^0.1.10
-    version: 0.1.10
+    specifier: ^0.1.11
+    version: 0.1.11
   tailwind-merge:
     specifier: ^3.0.2
     version: 3.0.2
@@ -12206,8 +12206,8 @@ packages:
     engines: {node: '>= 6.0.0', npm: '>= 3.0.0'}
     dev: false
 
-  /socialfi@0.1.10:
-    resolution: {integrity: sha512-7C0TJOYTR1kskdCs0EkmAw94I9ND6SP8+7JJAQBYmcNKWsw7eqlRTr1wgCwigaeClCpBYF7E2aogdpD7sGyR7A==}
+  /socialfi@0.1.11:
+    resolution: {integrity: sha512-eyoZpgmR2duTD5VdjSAOiBn42Ch/efUWOWp9VAl4CQSeiCZz1tFV22LuO9xZCKwF9yYG+lkX7BjvaUD0jyMX5Q==}
     engines: {node: '>=14.0.0'}
     dependencies:
       axios: 1.8.1
