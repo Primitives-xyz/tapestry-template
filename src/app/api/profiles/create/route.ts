@@ -12,11 +12,12 @@ export async function POST(req: NextRequest) {
       { status: 400 },
     )
   }
-
   try {
-    const socialfi = new SocialFi({})
+    const client = new SocialFi({
+      baseURL: process.env.TAPESTRY_URL,
+    })
 
-    const profile = await socialfi.profiles.findOrCreateCreate(
+    const profile = await client.profiles.findOrCreate(
       {
         apiKey: process.env.TAPESTRY_API_KEY || '',
       },
@@ -27,7 +28,7 @@ export async function POST(req: NextRequest) {
       },
     )
 
-    console.log('[FindOrCreate] Profile created', JSON.stringify(profile))
+    // console.log('[FindOrCreate] Profile created', JSON.stringify(profile))
 
     return NextResponse.json(profile)
   } catch (error: any) {

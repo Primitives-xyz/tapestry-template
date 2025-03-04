@@ -27,7 +27,7 @@
     "pino-pretty": "^13.0.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "socialfi": "^0.1.9",
+    "socialfi": "^0.1.10",
     "tailwind-merge": "^3.0.2"
   },
   "devDependencies": {
