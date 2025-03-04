@@ -24,8 +24,6 @@ export async function POST(req: NextRequest) {
       },
     )
 
-    // console.log('[FindOrCreate] Profile created', JSON.stringify(profile))
-
     return NextResponse.json(profile)
   } catch (error: any) {
     return NextResponse.json(
