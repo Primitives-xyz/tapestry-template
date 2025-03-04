@@ -1,4 +1,4 @@
-import { fetchTapestry } from '@/utils/api'
+import { socialfi } from '@/utils/socialfi'
 import { NextRequest, NextResponse } from 'next/server'
 
 export async function POST(req: NextRequest) {
@@ -14,21 +14,12 @@ export async function POST(req: NextRequest) {
   }
 
   try {
-    // const response = await socialfi.search.profilesList({
-    //   query,
-    //   includeExternalProfiles: 'false',
-    //   page: '1',
-    //   pageSize: '50',
-    // })
-
-    const response = await fetchTapestry({
-      endpoint: 'search/profiles',
-      data: {
-        query,
-        includeExternalProfiles: 'false',
-        page: '1',
-        pageSize: '50',
-      },
+    const response = await socialfi.search.profilesList({
+      apiKey: process.env.TAPESTRY_API_KEY,
+      query,
+      includeExternalProfiles: 'false',
+      page: '1',
+      pageSize: '50',
     })
 
     return NextResponse.json(response)
