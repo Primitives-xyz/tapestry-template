@@ -1,5 +1,5 @@
-import { FetchMethod, fetchTapestry } from '@/utils/api'
 import { NextRequest, NextResponse } from 'next/server'
+import { SocialFi } from 'socialfi'
 
 export async function POST(req: NextRequest) {
   const formData = await req.formData()
@@ -14,24 +14,20 @@ export async function POST(req: NextRequest) {
   }
 
   try {
-    // const profile = await socialfi.profiles.findOrCreateCreate(
-    //   {},
-    //   {
-    //     walletAddress: ownerWalletAddress,
-    //     username,
-    //     blockchain: 'SOLANA',
-    //   },
-    // )
+    const socialfi = new SocialFi({})
 
-    const profile = await fetchTapestry({
-      endpoint: 'profiles/findOrCreate',
-      method: FetchMethod.POST,
-      data: {
+    const profile = await socialfi.profiles.findOrCreateCreate(
+      {
+        apiKey: process.env.TAPESTRY_API_KEY || '',
+      },
+      {
         walletAddress: ownerWalletAddress,
         username,
         blockchain: 'SOLANA',
       },
-    })
+    )
+
+    console.log('[FindOrCreate] Profile created', JSON.stringify(profile))
 
     return NextResponse.json(profile)
   } catch (error: any) {
